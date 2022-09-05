@@ -5,10 +5,15 @@ import com.company.models.enums.Measure;
 import com.company.models.enums.ProductCategory;
 import com.company.models.interfaces.Operation;
 
+import java.util.Arrays;
+import java.util.Scanner;
+
 public class OperationImpl implements Operation {
-    Sugar sugar = new Sugar("Кант",400, Measure.Kg, ProductCategory.Groats);
-    Water water = new Water("Legenda",25,Measure.Li, ProductCategory.Drinks);
-    Tee tee = new Tee("Lipton", 100, Measure.Li, ProductCategory.Drinks);
+    Sugar sugar = new Sugar("Кант",400, Measure.Kg, ProductCategory.DAIRY);
+    Water water = new Water("Legenda",25,Measure.Li, ProductCategory.DAIRY);
+    Tee tee = new Tee("Lipton", 100, Measure.Li, ProductCategory.FRUITS);
+    Yogurt yogurt = new Yogurt("Bio yogurt",21,Measure.Li, ProductCategory.DAIRY);
+    Product[] products = {sugar,water,tee,yogurt};
 
     @Override
     public Receipt getReceipt(Order order) {
@@ -21,15 +26,33 @@ public class OperationImpl implements Operation {
     }
 
     @Override
-    public Product[] getProductByCategory(ProductCategory productCategory){
-        return null;
+    public Product[] getProductByCategory(String category){
+        int i = 0;
+        Product [] result = new Product[10];
+        for (Product product : products) {
+            if (product.getProductCategory().equals(ProductCategory.valueOf(category))){
+                result[i] = product;
+                i++;
+            }
+        }
+        return result;
     }
 
     @Override
-    public ProductCategory[] getCategory(){
-        return ProductCategory.values();
+    public  void getCategory(){
+        for (ProductCategory item: ProductCategory.values()) {
+            System.out.print(item.name() + " ");
+        }
     }
-    
+
+
+
+
+
+
+
+
+
 
 
 

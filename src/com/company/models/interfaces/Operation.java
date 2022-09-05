@@ -12,9 +12,9 @@ public interface Operation {
 
     Cashier getCashier(Cashier cashier);
 
-    Product[] getProductByCategory(ProductCategory productCategory);
+    Product[] getProductByCategory(String category);
 
-    ProductCategory[] getCategory();
+    void getCategory();
 
 
 }

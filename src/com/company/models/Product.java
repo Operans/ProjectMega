@@ -45,4 +45,17 @@ public abstract class Product {
     public void setMeasure(Measure measure) {
         this.measure = measure;
     }
+
+    public ProductCategory getProductCategory() {
+        return productCategory;
+    }
+
+    public void setProductCategory(ProductCategory productCategory) {
+        this.productCategory = productCategory;
+    }
+
+
+    public void getInfo(){
+        System.out.print("Product name: " + name + " Product cost: " + cost);
+    }
 }
